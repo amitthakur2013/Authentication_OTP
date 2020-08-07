@@ -10,6 +10,7 @@ const User = require('./models/user');
 
 mongoose.set('useFindAndModify',false);
 mongoose.set('useNewUrlParser',true);
+require('dotenv').config();
 mongoose.set('useUnifiedTopology',true);
 mongoose.set('useCreateIndex',true);
 
@@ -49,6 +50,12 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// set local variables middleware
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;
+  // continue on to next function in middleware chain
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

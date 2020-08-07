@@ -5,6 +5,8 @@
 		    	<a href="/"><b>Home</b></a>
 		    </div>
 		</li>
+
+		  <% if(!currentUser) { %>
 		<li>
 			<div>
 		    	<a href="/register"><b>Register</b></a>
@@ -15,5 +17,19 @@
     			<a href="/login"><b>Login</b></a>
     		</div>
 		</li>
+		 <% } else { %>
+		 <li>
+			<div>
+		    	<a href="/profile"><b>Profile(<%=currentUser.username%>)</b></a>
+		    </div>
+		</li>
+		<li>
+			<div>
+    			<a href="/logout"><b>Logout</b></a>
+    		</div>
+		</li>
+		<% } %>
+
+
 	</ul>
 </div><br/>

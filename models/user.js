@@ -18,9 +18,8 @@ const UserSchema = new Schema({
 		required:true
 	},
 	phone:{
-		type:Number,
-		min: [10, 'Invalid phone number'],
-		max: [10, 'Invalid phone number']
+		type:String,
+		required:true,
 	},
 	otp:String,
 },{
