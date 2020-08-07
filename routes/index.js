@@ -6,7 +6,12 @@ const { asyncErrorHandler} = require('../middleware');
 const { landingPage,
 	getRegister,
 	getLogin,
-	postRegister
+	postRegister,
+	postLogin,
+	getLoginOtp,
+	putLoginOtp,
+	getSetOtp,
+	putSetOtp
       } = require('../controllers');
 
 /* GET home page. */
@@ -20,6 +25,22 @@ router.post('/register' ,upload.single('image'),asyncErrorHandler(postRegister))
 
 /*Login User */
 router.get('/login',getLogin);
+
+/* POST /login */
+router.post('/login', asyncErrorHandler(postLogin));
+
+/*Get Login Otp*/
+router.get('/login-otp',getLoginOtp);
+
+/*POST Login Otp*/
+router.post('/login-otp',asyncErrorHandler(putLoginOtp));
+
+/*Get SetOtp*/
+router.get('/set-otp',getSetOtp);
+
+/*POST SetOtp*/
+router.post('/set-otp',asyncErrorHandler(putSetOtp));
+
 
 /*GET Logout*/
 router.get('/logout',(req,res,next) => {

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<% include ../partials/navbar %>
+    <h1>Login using Mobile OTP</h1><br/>
+
+    <form action="/login-otp" method="POST">
+	<div>
+		<label for="phone">Enter Your phone no</label>
+		<input type="text" name="phone" name="phone" placeholder="phone.." required>
+	</div><br/>
+	<input type="submit" value="Send OTP">
+	</form>
+
+	
+
+    
+  </body>
+</html>

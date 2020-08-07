@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<% include ../partials/navbar %>
+    <h1>Login using Mobile OTP</h1><br/>
+
+    <form action="/set-otp?phone=<%=phone%>" method="POST">
+	<div>
+		<label for="otp">Enter 6 digit OTP:</label>
+		<input type="text" name="otp" name="otp" placeholder="otp.." required>
+	</div><br/>
+	<input type="submit" value="Submit">
+	</form>
+
+	
+
+    
+  </body>
+</html>
