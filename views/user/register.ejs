@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register Page</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<% include ../partials/navbar %>
+    <h1>Register page</h1><br/>
+
+	<form action="/register" method="POST" enctype="multipart/form-data">
+	<div>
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username" placeholder="username" required>
+	</div><br/>
+	<div>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" placeholder="password" required>
+	</div><br/>
+	<div>
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" placeholder="email" required>
+	</div><br/>
+	<div>
+		<label for="age">Age:</label>
+		<input type="number" id="age" name="age" placeholder="age" required>
+	</div><br/>
+	<div>
+		<label for="phone">Phone no</label>
+		<input type="number" id="phone" name="phone" placeholder="phone" required>
+	</div><br/>
+	<div>
+		<label for="image">Image:</label>
+		<input type="file" id="image" name="image">
+	</div><br/>
+
+	<input type="submit">
+</form>    
+  </body>
+</html>

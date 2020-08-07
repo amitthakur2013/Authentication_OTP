@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<% include ../partials/navbar %>
+    <h1>Login page</h1><br/>
+
+    <form action="/login" method="POST">
+	<div>
+		<label for="username">Username</label>
+		<input type="text" name="username" name="username" placeholder="username" required>
+	</div><br/>
+	<div>
+		<label for="password">Password</label>
+		<input type="password" name="password" id="password" placeholder="password">
+	</div><br/>
+	<input type="submit" value="Log in">
+	</form><br/>
+
+	<div>
+		<a href="/login-otp">Login using Phone</a>
+	</div>
+
+    
+  </body>
+</html>
