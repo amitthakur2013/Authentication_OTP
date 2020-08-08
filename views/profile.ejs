@@ -18,12 +18,15 @@
 			</div>
 			<input type="submit" value="Change pic" id="update-image-btn">
 		</form>
-	</div>
+		</div>
     </div>
     <hr/>
     <div>
-    	<h3><%=user.username%></h3>
-    	<h4><i><%=user.email%></i></h4>
+    	<h2>Your details:-</h2><hr/>
+    	<h3>Username: <%=user.username%></h3>
+    	<h4>Email: <i><%=user.email%></i></h4>
+    	<h4>Age:<%=user.age%></h4>
+    	<h4 style="color: green">Phone no: +91<%=user.phone%></h4>
     </div>   
     <script>
     	const img_count=document.getElementById('image');
