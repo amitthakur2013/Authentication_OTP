@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profile</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<% include ./partials/navbar %>
+    <h1>Welcome to your Profile:-</h1><hr/>
+    <div class="profile-content">
+    	<img src="<%=user.image.secure_url%>" class="profile-img" alt="image"/>
+    	<div>
+		<form action="/profile-image" method="POST" enctype="multipart/form-data">
+			<div>
+			<label for="image">Update Profile Pic:</label>
+			<small>(existing image gets deleted)</small>
+			<input type="file" id="image" name="image">
+			</div>
+			<input type="submit" value="Change pic" id="update-image-btn">
+		</form>
+	</div>
+    </div>
+    <hr/>
+    <div>
+    	<h3><%=user.username%></h3>
+    	<h4><i><%=user.email%></i></h4>
+    </div>   
+    <script>
+    	const img_count=document.getElementById('image');
+		const btn=document.getElementById('update-image-btn');
+		btn.addEventListener('click',e=>{
+			if(img_count.files.length==0){
+				alert('Warning! Profile image not chosen!!');
+				e.preventDefault();
+			} 
+		})
+	</script> 
+  </body>
+</html>

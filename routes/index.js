@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const multer = require('multer');
 const upload=multer({'dest':'uploads/'});
-const { asyncErrorHandler} = require('../middleware');
+const { asyncErrorHandler, isLoggedIn} = require('../middleware');
 const { landingPage,
 	getRegister,
 	getLogin,
@@ -11,7 +11,9 @@ const { landingPage,
 	getLoginOtp,
 	putLoginOtp,
 	getSetOtp,
-	putSetOtp
+	putSetOtp,
+	getProfile,
+	updateProfileImage
       } = require('../controllers');
 
 /* GET home page. */
@@ -41,11 +43,17 @@ router.get('/set-otp',getSetOtp);
 /*POST SetOtp*/
 router.post('/set-otp',asyncErrorHandler(putSetOtp));
 
-
 /*GET Logout*/
 router.get('/logout',(req,res,next) => {
   req.logout();
   res.redirect('/');
 })
+
+/*Get Profile*/
+router.get('/profile', isLoggedIn,asyncErrorHandler(getProfile));
+
+/*Change profile pic*/
+router.post('/profile-image',isLoggedIn,upload.single('image'),asyncErrorHandler(updateProfileImage));
+
 
 module.exports = router;

@@ -11,8 +11,9 @@ cloudinary.config({
 });
 
 module.exports={
-	landingPage(req, res, next) {
-		res.render('index');
+	async landingPage(req, res, next) {
+		const users=await User.find({}).sort('-_id').exec()
+		res.render('index',{users});
 	},
 	getRegister(req, res,next) {
 		if(req.isAuthenticated()) return res.redirect('/');
@@ -120,5 +121,22 @@ module.exports={
 				}
 			})
 			.catch(err => next(err));
-	}
+	},
+
+	async getProfile(req, res, next) {
+		const user=await User.findById(req.user._id)
+		res.render('profile',{user});
+	},
+
+	async updateProfileImage(req, res, next) {
+		const user=req.user;
+		if(user.image.public_id) await cloudinary.v2.uploader.destroy(user.image.public_id);
+		let image = await cloudinary.v2.uploader.upload(req.file.path);
+		user.image.secure_url=image.secure_url;
+		user.image.public_id=image.public_id;
+		await user.save();
+		res.redirect('/profile');
+
+	},
+
 }

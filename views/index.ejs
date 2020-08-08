@@ -6,13 +6,41 @@
   </head>
   <body>
   	<% include ./partials/navbar %>
-    <h1>Welcome at Home page!</h1>
-    <div>
-    	<a href="/register"><b>Register</b></a>
-    </div>
-    <br/>
-    <div>
-    	<a href="/login"><b>Login</b></a>
-    </div>
+    <h1>Welcome at Home page!</h1><hr/>
+    <form action="/" method="GET" style="margin-top:30px;margin-bottom: 30px ">
+      <fieldset>
+        <br/>
+        <legend><b>Search</b></legend>
+        <label for="search">Search</label>
+        <input type="text" id="search" placeholder="Search" name="search" >
+      </fieldset><br/>
+      <fieldset>
+        <legend><b>Filter by Age</b></legend>
+        <label for="min">Min</label>
+        <input type="text" id="min" name="price[min]" min="0" max="10000" step="1" placeholder="Min">   
+
+        <label for="max">Max</label>
+        <input type="text" id="max" name="price[max]" min="0" max="10000" step="1" placeholder="Max">
+      </fieldset><br/>
+      <div>
+        <a href="/" style="color: red">Reset form</a>
+      </div><br/>
+
+      <input type="submit">
+    </form>
+    <hr/>
+    <h4>Available Users:-</h4><hr/>
+    <% users.map((user) => { %>
+      <div>
+        <img src="<%=user.image.secure_url%>" class="profile-img"> 
+        <h3><%=user.username%></h3>
+        <h5>Age : <%=user.age%></h5>
+
+        <%if (currentUser && currentUser._id.equals(user._id)) {%>
+          <a href="/profile">Edit Profile</a>
+        <% } %>
+      </div><hr/>
+    <% }) %>
+    
   </body>
 </html>
