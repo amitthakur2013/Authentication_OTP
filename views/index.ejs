@@ -12,15 +12,15 @@
         <br/>
         <legend><b>Search</b></legend>
         <label for="search">Search</label>
-        <input type="text" id="search" placeholder="Search" name="search" >
+        <input type="text" id="search" placeholder="Search" name="search" value="<%= query.search %>">
       </fieldset><br/>
       <fieldset>
         <legend><b>Filter by Age</b></legend>
         <label for="min">Min</label>
-        <input type="text" id="min" name="price[min]" min="0" max="10000" step="1" placeholder="Min">   
+        <input type="text" id="min" name="age[min]" min="0" max="10000" step="1" placeholder="Min" value="<%= query.age ? query.age.min : '' %>">   
 
         <label for="max">Max</label>
-        <input type="text" id="max" name="price[max]" min="0" max="10000" step="1" placeholder="Max">
+        <input type="text" id="max" name="age[max]" min="0" max="10000" step="1" placeholder="Max" value="<%= query.age ? query.age.max : '' %>">
       </fieldset><br/>
       <div>
         <a href="/" style="color: red">Reset form</a>

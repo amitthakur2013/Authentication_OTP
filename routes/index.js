@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const multer = require('multer');
 const upload=multer({'dest':'uploads/'});
-const { asyncErrorHandler, isLoggedIn} = require('../middleware');
+const { asyncErrorHandler, isLoggedIn, searchAndFilterPosts} = require('../middleware');
 const { landingPage,
 	getRegister,
 	getLogin,
@@ -17,7 +17,7 @@ const { landingPage,
       } = require('../controllers');
 
 /* GET home page. */
-router.get('/',asyncErrorHandler(landingPage));
+router.get('/',asyncErrorHandler(searchAndFilterPosts), asyncErrorHandler(landingPage));
 
 /*GET Register User */
 router.get('/register',getRegister);

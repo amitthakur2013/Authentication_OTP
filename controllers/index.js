@@ -12,8 +12,17 @@ cloudinary.config({
 
 module.exports={
 	async landingPage(req, res, next) {
-		const users=await User.find({}).sort('-_id').exec()
-		res.render('index',{users});
+		const {dbQuery}=res.locals;
+		console.log(dbQuery);
+		delete res.locals.dbQuery;
+		if(dbQuery){
+			const users=await User.find(dbQuery).sort('-_id').exec()
+			res.render('index',{users});
+		} else {
+			const users=await User.find({}).sort('-_id').exec()
+			res.render('index',{users});
+		}
+		
 	},
 	getRegister(req, res,next) {
 		if(req.isAuthenticated()) return res.redirect('/');
