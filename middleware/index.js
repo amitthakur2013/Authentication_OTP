@@ -22,7 +22,7 @@ module.exports = {
 			if (search) {
 				let search=escapeRegExp(req.query.search);
   				var regex = new RegExp(["^", search, "$"].join(""), "i");
-				dbQueries.push({ username: search });
+				dbQueries.push({ username: regex });
 			}
 			if (age) {
 				if (age.min) dbQueries.push({ age: { $gte: age.min } });
